@@ -31,7 +31,7 @@ line_bot_api = LineBotApi('hmDdVp5SnY9VouuOj0x72AsaMqbTed27zRlnvL6shzvf+CZElkGgG
  
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('7e2526361af1800f787f38d7de4ab065')
-line_bot_api.push_message('U535ea272631c1d15ea420c3f1db6332c', TextSendMessage(text='主人,我一直都在'))
+line_bot_api.push_message('U535ea272631c1d15ea420c3f1db6332c', TextSendMessage(text='感謝你加心花開好友,現在起你就是我的主人,主人可以吩咐我做任何事唷^^'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
