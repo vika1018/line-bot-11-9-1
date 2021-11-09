@@ -9,13 +9,29 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 app = Flask(__name__)
+
+#======讓heroku不會睡著======
+import threading 
+import requests
+def wake_up_heroku():
+    while 1==1:
+        url = 'https://vika-11-9-1.herokuapp.com/' + 'heroku_wake_up'
+        res = requests.get(url)
+        if res.status_code==200:
+            print('喚醒heroku成功')
+        else:
+            print('喚醒失敗')
+        time.sleep(28*60)
+
+threading.Thread(target=wake_up_heroku).start()
+#======讓heroku不會睡著======
  
 # 必須放上自己的Channel Access Token
 line_bot_api = LineBotApi('hmDdVp5SnY9VouuOj0x72AsaMqbTed27zRlnvL6shzvf+CZElkGgG8uwcNpuqfwk2zBfBPruIbJXy/NLopDInm3ULnWQxjtrtlcdfnFEuwDnl6v2ByeJLSh3U5rpuDimHIRZKZl5f6kgYH7Tf4I6FgdB04t89/1O/w1cDnyilFU=')
  
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('7e2526361af1800f787f38d7de4ab065')
-line_bot_api.push_message('U535ea272631c1d15ea420c3f1db6332c', TextSendMessage(text='你可以開始了'))
+line_bot_api.push_message('U535ea272631c1d15ea420c3f1db6332c', TextSendMessage(text='主人,我一直都在'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -39,7 +55,15 @@ def callback():
 ##### 基本上程式編輯都在這個function #####
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextMessage (text="你說的是不是:"+ event.message.text)
+    message = TextMessage (text="心花開")
+    message = TextMessage (text="主人你在叫我嗎?"+ event.message.text)
+    message = TextMessage (text="主人我在~有何吩咐?")
+def handle_message(event):
+    message = TextMessage (text="你是男是女")
+    message = TextMessage (text="主人你在問我嗎?"+ event.message.text)
+    message = TextMessage (text="主人想要我是男的,我就男的,而且可以當主人的暖男!主人要是想要我是女的,我就是女的,而且可以當主人的小甜心唷~")
+
+
     
     line_bot_api.reply_message(event.reply_token,message)
     #主程式
