@@ -43,13 +43,7 @@ def handle_message(event):
     if re.match('心花開',message):
         line_bot_api.reply_message(event.reply_token,TextSendMessage('主人我在,請問什麼事嗎?'))
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(message))
-def handle_message(event):
-    message = text=event.message.text
-    if re.match('你是男是女',message):
-        line_bot_api.reply_message(event.reply_token,TextSendMessage('主人想要我是男的,我就男的,而且可以當主人的暖男!主人要是想要我是女的,我就是女的,而且可以當主人的小甜心唷~'))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(message))           
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(message))        
 #主程式
 import os
 if __name__ == "__main__":
