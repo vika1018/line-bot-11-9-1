@@ -61,12 +61,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)    
 def handle_message(event):
     message = TextMessage (text="你是男是女")
-    message = TextMessage (event.message.text+"主人想要我是男的,我就男的,而且可以當主人的暖男!主人要是想要我是女的,我就是女的,而且可以當主人的小甜心唷~")
+    message = TextMessage ("主人想要我是男的,我就男的,而且可以當主人的暖男!主人要是想要我是女的,我就是女的,而且可以當主人的小甜心唷~"event.message.text)
     line_bot_api.reply_message(event.reply_token,message)
 @handler.add(MessageEvent, message=TextMessage)    
 def handle_message(event):
     message = TextMessage (text="心花開")
-    message = TextMessage (event.message.text+"主人我在~有何吩咐")
+    message = TextMessage ("主人我在~有何吩咐"event.message.text+)
     line_bot_api.reply_message(event.reply_token,message) 
 
     #主程式
